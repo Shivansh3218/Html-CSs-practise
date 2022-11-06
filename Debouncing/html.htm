@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text"  >
+    <p id="para">hello </p>
+    <button id="myId">Fire</button>
+</body>
+<script>
+//     function getData(){
+//         document.querySelector("#para").innerHTML = document.querySelector("input").value
+//     }
+//     function debounce(getData,delay){
+//         let timer
+//         return function(...args){
+//             if(timer) clearTimeout(timer)
+//            timer= setTimeout(()=>{
+//                 getData(...args)
+//             },delay)
+//         }
+//     }
+// let result = debounce(getData,2000)
+// document.querySelector("input").addEventListener("input",result)
+
+function fire(){
+    console.log("Firing the bullet")
+    document.getElementById("myId").disabled=false;
+}
+function throttling(fire,delay){
+    return function (...args){
+        document.getElementById("myId").disabled=true;
+        setTimeout(() => {
+            fire(...args)
+        }, delay);
+    }
+}
+let result = throttling(fire,2000)
+
+document.querySelector("#myId").addEventListener("click",result)
+</script>
+</html>
