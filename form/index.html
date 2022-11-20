@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <Label for="Input">Input Name</Label>
+        <input type="text"  id="input">
+        <label for="password">Password</label>
+        <input type="text"  id="pass">
+        <button>Submit</button>        
+    </form>
+    
+<button id="print">Print all</button>
+
+
+<h1 id="head"></h1>
+<button id="getvalue">get all</button>
+</body>
+
+</html>
+<script>
+
+    let int = document.querySelector("#input")
+    let pass = document.querySelector("#pass")
+    let head = document.querySelector("#head")
+    let btn = document.querySelector("button")
+    let prints = document.querySelector("#print")
+    let getvalue =document.querySelector("#getvalue")
+    let obj ={}
+    let arr =[]
+    btn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        obj = { name: int.value,
+        pass: pass.value        
+        }
+        arr.push(obj) 
+    })
+    prints.addEventListener("click",()=>{
+     localStorage.setItem("array",arr)
+    })
+
+getvalue.addEventListener("click",()=>{
+   let abc =   localStorage.getItem("array")
+   head.innerHTML= abc
+})
+
+
+
+</script>
