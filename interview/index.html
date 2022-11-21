@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <label for="name">User Name</label>
+        <input required type="text" id="name">
+        <label for="email">E mail</label>
+        <input requ type="text" id="email">
+        <label for="phone">Ph No.</label>
+        <input type="text" id="phone">
+        <button> Submit</button>
+    </form>
+
+    <div class="object"></div>
+</body>
+<script>
+    let int = document.querySelector("#name")
+    let email = document.querySelector("#email")
+    let phone = document.querySelector("#phone")
+    let btn = document.querySelector("button")
+    let obj = document.querySelector(".object")
+
+
+    btn.addEventListener("click", (e) => {
+        e.preventDefault()
+        let html = `<div id ="${int.value}">
+         <h1>${int.value}</h1>
+          <h2>${email.value}</h2>
+           <h3>${phone.value}</h1>
+           </div>
+            <button >Delete</button>`
+
+        obj.innerHTML += html
+
+    })
+
+
+// console.log(a)
+// console.log(b)
+// console.log(c)
+
+    // var a = 10
+    // let b = 2
+    // const c=3
+
+// function fun(){
+//     let a=10
+//     return function(){
+//         return a
+//     }
+// }
+// console.log(fun()())
+
+</script>
+
+</html>
