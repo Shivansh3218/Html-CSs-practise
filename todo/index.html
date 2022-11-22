@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="int">
+    <button class="button">Submit</button>
+
+    <div class="object"></div>
+
+</body>
+
+<script>
+    let int = document.querySelector("#int")
+    let btn = document.querySelector(".button")
+    let object = document.querySelector(".object")
+    let arr = []
+    let obj = {}
+
+    function displayTask() {
+        object.innerHTML = ""
+        arr.map((task, index) => {
+            object.innerHTML += `<div>${task.task}</div>
+        <button onclick = "deletes(${index})">Delete</button>`
+        })
+    }
+
+    function deletes(index) {
+        console.log("hello", arr)
+        arr.splice(index, 1)
+        console.log(arr)
+        displayTask()
+    }
+
+
+    function addTask() {
+        arr = [...arr, { task: int.value }]
+        displayTask()
+    }
+
+    btn.addEventListener("click", addTask)
+
+</script>
+
+</html>
+

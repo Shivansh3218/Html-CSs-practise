@@ -31,18 +31,28 @@
 
     btn.addEventListener("click", (e) => {
         e.preventDefault()
-        let html = `<div id ="${int.value}">
+        let html = `<div id ="parent_div">
          <h1>${int.value}</h1>
           <h2>${email.value}</h2>
            <h3>${phone.value}</h1>
            </div>
-            <button >Delete</button>`
-
-        obj.innerHTML += html
+            <button class="del_btn" >Delete</button>
+            </div>`
+           obj.innerHTML += html
 
     })
 
+    obj.addEventListener("click",(e)=>{
+        if(e.target.classList.contains("del_btn")){
+            e.target.closest("div").remove()
+        }
+    })
 
+
+</script>
+
+</html>
+<!-- 
 // console.log(a)
 // console.log(b)
 // console.log(c)
@@ -57,8 +67,4 @@
 //         return a
 //     }
 // }
-// console.log(fun()())
-
-</script>
-
-</html>
+// console.log(fun()()) -->
