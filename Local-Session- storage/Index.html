@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label for="Input Field">Text input</label>
+    <input type="text">
+    <button>Save</button>
+
+    <div class="savedItems">
+
+    </div>
+
+</body>
+<script>
+    //================== Selectors ====================//
+
+    let input = document.querySelector("input")
+    let btn = document.querySelector("button")
+    let savedItems = document.querySelector(".savedItems")
+
+    let itemArray = []
+    let localArray =[]
+    // function addItem(){
+    //     let newItem = input.value
+    //     itemArray.push([...itemArray,newItem]);
+    //     let html = `<div id =${input.value}>
+    //         <h1>${newItem}</h1>
+    //     <button class="delBtn"  onclick="delete">Delete</button>
+    //     </div>
+    //     `
+    //     savedItems.innerHTML+= html;
+    //     newItem="";
+    // }
+    function addItem() {
+        itemArray.push(input.value)
+        showItems()
+    }
+
+    function showItems() {
+        let mapped = itemArray.map((item, index) => {
+            return `
+            <div id=${index}>
+            <h1>${item}</h1>
+            <button class="del" onclick="delFun(${index})">delete</button>
+            <button class="edit">edit</button>
+            <button class="save" onclick= "saveFun(${index})">Save</button>
+            </div>
+            ` })
+        input.value = ""
+        savedItems.innerHTML = mapped
+    }
+
+   let edit =  document.querySelector(".edit")
+
+    function delFun(id) {
+        //   let filteredArr =  itemArray.filter((element,index)=>{
+        //        return index!==id
+        //     })
+        //     savedItems.innerHTML = filteredArr
+        itemArray.splice(id, 1)
+        showItems()
+    }
+
+    function saveFun(id){
+        let saved = itemArray.filter((item,index)=>{
+            return index===id
+        })
+        localArray.push(saved)
+        saved=null
+        console.log(localArray)
+    }
+    savedItems.addEventListener("click",(e)=>{
+        console.log(e.target.classList)
+        if(e.target.classList.contains("edit")){ //parentNode is div, firstchild is #text and it's next sibling is h1 tag whose attribute we are setting to editable
+
+            // console.log(e.target.parentNode.firstChild.nextElementSibling)
+            e.target.parentNode.firstChild.nextElementSibling.setAttribute('contenteditable', 'true')
+        }
+        if(e.target.classList.contains("save")){ ///parentNode is div, firstchild is #text and it's next sibling is h1 tag whose attribute contenteditable we are removing 
+            
+            // console.log(e.target.parentNode.firstChild.nextElementSibling)
+            e.target.parentNode.firstChild.nextElementSibling.removeAttribute('contenteditable')
+        }
+
+    })
+
+    btn.addEventListener("click", addItem)
+</script>
+
+</html>
