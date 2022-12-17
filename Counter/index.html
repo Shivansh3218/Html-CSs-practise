@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1></h1>
+    <input type="number" >
+    <button onclick="handleIncrement()" class="increseBtn">increment</button>
+    <button onclick="handleDecrement()">decrement</button>
+    <button onclick="handleIncreseByValue()">Increment By Value</button>
+</body>
+<script>
+    let input =  document.querySelector("input")
+    let increseBtn = document.querySelector(".increseBtn")
+    let count = 0
+    document.querySelector("h1").innerText = count
+    const handleIncrement = () => {
+        count = count + 1
+        document.querySelector("h1").innerText = count
+    }
+    const handleDecrement = () => {
+        count = count -1
+        document.querySelector("h1").innerText = count
+    }
+    const handleIncreseByValue= ()=>{
+    //    input.value= parseInt(input.value)
+    let value =parseInt(input.value)
+        //  let value= 10
+        count+=value
+        document.querySelector("h1").innerText= count
+    }
+    // input.addEventListener("input",)
+// increseBtn.addEventListener("click",handleIncrement)
+</script>
+
+</html>
