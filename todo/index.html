@@ -26,8 +26,10 @@
     function displayTask() {
         object.innerHTML = ""
         arr.map((task, index) => {
-            object.innerHTML += `<div>${task.task}</div>
-        <button onclick = "deletes(${index})">Delete</button>`
+            object.innerHTML += `<div>
+                <h1 class="taskHead">${task.task}</h1>
+        <button onclick = "deletes(${index})">Delete</button>
+        <button class="edit">Edit</button></div>`
         })
     }
 
@@ -38,7 +40,17 @@
         displayTask()
     }
 
-
+    object.addEventListener("click" ,(e)=>{
+        // console.log(e.target.closest('div'))
+        if(e.target.innerHTML == "save") {
+        e.target.parentNode.firstChild.nextElementSibling.contentEditable = false
+        }
+       else if(e.target.classList.contains("edit")) {
+        e.target.parentNode.firstChild.nextElementSibling.contentEditable = true
+        document.querySelector(".edit").innerHTML = "save"
+        }
+      
+    })
     function addTask() {
         arr = [...arr, { task: int.value }]
         displayTask()
