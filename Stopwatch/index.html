@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h1 class="mins">00</h1>
+        <h1 class="seconds">00</h1>
+
+        <button class="startTime">Start</button>
+        <button class="stopTime">Stop</button>
+        <div id="app"></div>
+
+    </div>
+</body>
+
+<script>
+const mins =  document.querySelector(".mins")
+const seconds =  document.querySelector(".seconds")
+const start =  document.querySelector(".startTime")
+const stop =  document.querySelector(".stopTime")
+var sec = 0
+var minutes = 0
+var interval;
+
+
+const displayTime = ()=>{
+    if(sec>=60){
+        sec = 0
+       minutes+=1
+    }
+    seconds.innerHTML=sec
+    mins.innerHTML =minutes
+}
+
+const increseTime = ()=>{
+    clearInterval(interval)
+  interval =  setInterval(()=>{
+        sec+=1
+        // console.log(sec)
+        displayTime()
+    },10)
+}
+
+const stopTime = ()=>{
+    clearInterval(interval)
+}
+start.addEventListener("click",increseTime)
+stop.addEventListener("click",stopTime)
+
+
+</script>
+
+</html>
