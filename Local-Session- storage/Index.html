@@ -57,6 +57,7 @@
         savedItems.innerHTML = mapped
     }
 
+
    let edit =  document.querySelector(".edit")
 
     function delFun(id) {
@@ -80,8 +81,8 @@
         console.log(e.target.classList)
         if(e.target.classList.contains("edit")){ //parentNode is div, firstchild is #text and it's next sibling is h1 tag whose attribute we are setting to editable
 
-            // console.log(e.target.parentNode.firstChild.nextElementSibling)
-            e.target.parentNode.firstChild.nextElementSibling.setAttribute('contenteditable', 'true')
+            console.log(e.target.parentNode.firstChild.nextElementSibling)
+            e.target.parentNode.firstChild.nextElementSibling.setAttribute('readonly', 'readonly')
         }
         if(e.target.classList.contains("save")){ ///parentNode is div, firstchild is #text and it's next sibling is h1 tag whose attribute contenteditable we are removing 
             
